@@ -1,6 +1,7 @@
 import Fastify, { FastifyServerOptions } from 'fastify';
 
 export function buildApp(options: FastifyServerOptions = {}) {
+  const broken: number = 'not-a-number';
   const app = Fastify({
     logger: options.logger ?? true,
     ...options
