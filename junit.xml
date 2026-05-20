@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites name="vitest tests" tests="2" failures="2" errors="0" time="0.121952666">
+    <testsuite name="test/app.test.ts" timestamp="2026-05-20T17:38:10.885Z" hostname="MacBook-Air-46" tests="2" failures="2" errors="0" skipped="0" time="0.121952666">
+        <testcase classname="test/app.test.ts" name="Fastify app &gt; GET /health returns ok status" time="0.117796875">
+            <failure message="expected 200 to be 500 // Object.is equality" type="AssertionError">
+AssertionError: expected 200 to be 500 // Object.is equality
+
+- Expected
++ Received
+
+- 500
++ 200
+
+ ❯ test/app.test.ts:12:33
+            </failure>
+        </testcase>
+        <testcase classname="test/app.test.ts" name="Fastify app &gt; GET / returns app message and version" time="0.0024305">
+            <failure message="expected 200 to be 500 // Object.is equality" type="AssertionError">
+AssertionError: expected 200 to be 500 // Object.is equality
+
+- Expected
++ Received
+
+- 500
++ 200
+
+ ❯ test/app.test.ts:24:33
+            </failure>
+        </testcase>
+    </testsuite>
+</testsuites>

@@ -38,23 +38,28 @@ jobs:
         run: npm run format:check
 
       - name: Run tests
+        id: tests
+        continue-on-error: true
         run: |
-          mkdir -p reports
-          npm test -- --reporter=default --reporter=junit --outputFile.junit=reports/vitest-junit.xml
+          npm test -- --reporter=default --reporter=junit --outputFile.junit=junit.xml
 
       - name: Publish test results
         uses: dorny/test-reporter@v2
         if: success() || failure()
         with:
           name: Vitest Test Results
-          path: reports/vitest-junit.xml
+          path: junit.xml
           reporter: java-junit
           fail-on-error: true
+
+      - name: Fail if tests failed
+        if: steps.tests.outcome == 'failure'
+        run: exit 1
 
       - name: Upload test report artifact
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: test-report-${{ github.run_id }}
-          path: reports/
+          path: junit.xml
           if-no-files-found: ignore
